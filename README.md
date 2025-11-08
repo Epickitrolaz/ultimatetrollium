@@ -38,7 +38,6 @@ OneShot-Extended
 
 TODO list:
 - Fix kismet
-- add a probe scanner
 - add target client deauth
 - add evil portal functionality
 - migrate to airmon-ng

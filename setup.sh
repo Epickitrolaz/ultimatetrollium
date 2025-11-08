@@ -129,6 +129,15 @@ python -m venv "$APPLEJUICE_PATH"/.venv
 
 echo -e "\n[*] AppleJuice set up.\n"
 
+
+PROBE_SCANNER_PATH="$SCRIPT_DIR/.scripts/probe-scanner"
+
+echo -e "\n[*] Setting up probe-scanner...\n"
+python -m venv "$PROBE_SCANNER_PATH"/.venv
+"$PROBE_SCANNER_PATH"/.venv/bin/python -m pip install -r "$PROBE_SCANNER_PATH"/requirements.txt
+
+echo -e "\n[*] Probe-scanner set up.\n"
+
 mkdir -p captured
 
 read -p "Which wlan device will you be using? (eg. wlan1): " interface

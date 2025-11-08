@@ -17,4 +17,5 @@ nohup.out
 .scripts/dhcp-starvation/dhcp-starvation
 .scripts/applejuice/.venv
 .scripts/applejuice/utils/__pycache__
+.scripts/probe-scanner/.venv
 captured
