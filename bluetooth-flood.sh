@@ -25,12 +25,10 @@ awk '
     if (mac) {
         printf "%-20s %-10s %-5s %-30s\n", mac, type, rssi, name
     }
-
     mac = $3;
     type = $5;
     name = "(not available)"; # Default name
     rssi = "N/A";            # Default RSSI
-
     for (i = 6; i <= NF; i++) {
         if ($i == "rssi") {
             rssi = $(i+1);
@@ -46,7 +44,7 @@ END {
     if (mac) {
         printf "%-20s %-10s %-5s %-30s\n", mac, type, rssi, name
     }
-}' /tmp/scan.txt
+}' /tmp/scan.txt | sort -k3 -nr
 
 grep "dev_found" /tmp/scan.txt | awk '{print $3}' > /tmp/macs.txt
 echo -e "\nMACs formatted\n"
