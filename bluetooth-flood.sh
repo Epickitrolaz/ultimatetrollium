@@ -4,7 +4,7 @@ rm -f /tmp/scan.txt /tmp/macs.txt > /dev/null
 
 function cleanup() {
 	killall l2ping
-	killall ble-flood.sh
+	killall bluetooth-flood.sh
 	exit 0
 }
 
