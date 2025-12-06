@@ -138,6 +138,7 @@ python -m venv "$PROBE_SCANNER_PATH"/.venv
 
 echo -e "\n[*] Probe-scanner set up.\n"
 
+
 mkdir -p captured
 
 read -p "Which wlan device will you be using? (eg. wlan1): " interface
