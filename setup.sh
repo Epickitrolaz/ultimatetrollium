@@ -15,7 +15,7 @@ echo -e "\n[*] Installing WiFi/Bluetooth attack tools and dependencies...\n"
 sudo apt install build-essential bluez libbluetooth-dev sox nmap aircrack-ng network-manager reaver bluez mdk4 iw pixiewps nano neovim hostapd dnsmasq python3-dev libnl-route-3-dev libnl-genl-3-dev libpcap-dev libev-dev libnl-3-dev -y
 
 echo -e "\n[*] Building the carwhisperer exploit...\n"
-cd "$SCRIPT_DIR/carwhisperer"
+cd "$SCRIPT_DIR/.scripts/carwhisperer"
 make
 mkdir -p "output"
 cd "$SCRIPT_DIR"
@@ -137,6 +137,7 @@ python -m venv "$PROBE_SCANNER_PATH"/.venv
 "$PROBE_SCANNER_PATH"/.venv/bin/python -m pip install -r "$PROBE_SCANNER_PATH"/requirements.txt
 
 echo -e "\n[*] Probe-scanner set up.\n"
+
 
 mkdir -p captured
 
