@@ -1,8 +1,10 @@
-carwhisperer/message*
-carwhisperer/out*
-carwhisperer/carwhisperer
-carwhisperer/output
-carwhisperer/output/*
+.scripts/carwhisperer/message*
+.scripts/carwhisperer/out*
+.scripts/carwhisperer/carwhisperer
+.scripts/carwhisperer/output
+.scripts/carwhisperer/output/*
+.scripts/carwhisperer/*.wav
+*.raw
 reports
 Kismet-*
 nohup.out
