@@ -35,10 +35,11 @@ wifijammer
 OneShot-Extended
 ```
 
+If a script is not detecting a device even though it's plugged in, try rebooting.
+
 
 TODO list:
 - Fix kismet
 - add target client deauth
-- add evil portal functionality
 - migrate to airmon-ng
 - add a way to connect to bluetooth devices
