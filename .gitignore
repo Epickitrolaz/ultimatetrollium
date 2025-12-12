@@ -4,10 +4,6 @@
 .scripts/carwhisperer/output
 .scripts/carwhisperer/output/*
 .scripts/carwhisperer/*.wav
-*.raw
-reports
-Kismet-*
-nohup.out
 .scripts/wifijammer/.venv
 .scripts/wifijammer/__pycache__
 .scripts/ose/src/__pycache__
@@ -20,8 +16,8 @@ nohup.out
 .scripts/applejuice/.venv
 .scripts/applejuice/utils/__pycache__
 .scripts/probe-scanner/.venv
-captured
 wifi/captured
 wifi/Kismet-*
 bluetooth/*.raw
 local/reports
+nohup.out
