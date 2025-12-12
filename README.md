@@ -3,28 +3,19 @@ A collection of simple bash scripts for the raspberry pi made to simplify cybers
 
 Some scripts were not made by me. 
 
-Carwhisperer: https://trifinite.org/stuff/carwhisperer
+- Carwhisperer: https://trifinite.org/stuff/carwhisperer
+- wifijammer: https://github.com/hash3liZer/wifijammer
+- OneShot-Extended: https://github.com/chickendrop89/OneShot-Extended
+- AppleJuice: https://github.com/ECTO-1A/AppleJuice
 
-wifijammer: https://github.com/hash3liZer/wifijammer
-
-OneShot-Extended: https://github.com/chickendrop89/OneShot-Extended
-
-AppleJuice: https://github.com/ECTO-1A/AppleJuice
-
-## How to setup?
+## How to setup/update?
 ```
 sudo apt update
 sudo apt install git -y
 
 git clone https://github.com/PixelGames987/ultimatetrollium/
-cd ultimatetrollium
-
-./setup.sh
-```
-
-## How to update?
-```
 git pull
+cd ultimatetrollium
 
 ./setup.sh
 ```
