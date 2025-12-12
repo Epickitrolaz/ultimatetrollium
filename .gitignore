@@ -21,3 +21,7 @@ nohup.out
 .scripts/applejuice/utils/__pycache__
 .scripts/probe-scanner/.venv
 captured
+wifi/captured
+wifi/Kismet-*
+bluetooth/*.raw
+local/reports
