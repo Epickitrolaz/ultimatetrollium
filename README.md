@@ -1,7 +1,7 @@
 # ultimatetrollium
-A collection of simple bash scripts for the raspberry pi made to simplify running wifi/bluetooth attacks using ssh.
+A collection of simple bash scripts for the raspberry pi made to simplify cybersecurity research using ssh.
 
-Note: Some scripts were not made by me. 
+Some scripts were not made by me. 
 
 Carwhisperer: https://trifinite.org/stuff/carwhisperer
 
@@ -11,7 +11,7 @@ OneShot-Extended: https://github.com/chickendrop89/OneShot-Extended
 
 AppleJuice: https://github.com/ECTO-1A/AppleJuice
 
-How to setup?
+## How to setup?
 ```
 sudo apt update
 sudo apt install git -y
@@ -22,24 +22,18 @@ cd ultimatetrollium
 ./setup.sh
 ```
 
+## How to update?
+```
+git pull
+
+./setup.sh
+```
+
+## Notes for users:
 Websites for dns spoofing can easily be created using an AI like ChatGPT or Gemini and running it on port 80.
-
-
-The setup script installs:
-```
-build-essential bluez libbluetooth-dev sox nmap aircrack-ng network-manager reaver bluez mdk3 wpa-supplicant iw pixiewps, neovim, hostapd, dnsmasq
-carwhisperer
-tailscale (optional)
-kismet
-wifijammer
-OneShot-Extended
-```
-
 If a script is not detecting a device even though it's plugged in, try rebooting.
 
-
-TODO list:
-- Fix kismet
-- add target client deauth
-- migrate to airmon-ng
-- add a way to connect to bluetooth devices
+## TODO list:
+- Add kismet gpsd support
+- Migrate to airmon-ng
+- Add a way to connect to bluetooth devices (in development)
