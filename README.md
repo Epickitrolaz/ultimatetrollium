@@ -25,6 +25,5 @@ Websites for dns spoofing can easily be created using an AI like ChatGPT or Gemi
 If a script is not detecting a device even though it's plugged in, try rebooting.
 
 ## TODO list:
-- Add kismet gpsd support
 - Migrate to airmon-ng
 - Add a way to connect to bluetooth devices (in development)
