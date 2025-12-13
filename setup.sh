@@ -20,30 +20,27 @@ make
 mkdir -p "output"
 cd "$SCRIPT_DIR"
 
-read -p "Do you want to install tailscale? (Y/n): " tailscale
-if [ "${tailscale^^}" != "N" ]; then
-    if ! command -v tailscale &> /dev/null; then
-        echo -e "\n[*] Installing tailscale...\n"
-        curl -fsSL https://tailscale.com/install.sh | sh
-        echo -e "\n[*] Tailscale installed\n"
-    else
-        echo -e "\n[*] Tailscale already installed, skipping installation.\n"
-    fi
-    sudo systemctl enable tailscaled --now
-    
-    TAILSCALE_CONF="/etc/sysctl.d/99-tailscale.conf"
-    if ! sudo grep -q 'net.ipv4.ip_forward = 1' "$TAILSCALE_CONF"; then
-        echo 'net.ipv4.ip_forward = 1' | sudo tee -a "$TAILSCALE_CONF"
-    else
-        echo "net.ipv4.ip_forward already configured."
-    fi
-    if ! sudo grep -q 'net.ipv6.conf.all.forwarding = 1' "$TAILSCALE_CONF"; then
-        echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a "$TAILSCALE_CONF"
-    else
-        echo "net.ipv6.conf.all.forwarding already configured."
-    fi
-    sudo sysctl -p "$TAILSCALE_CONF"
+if ! command -v tailscale &> /dev/null; then
+	echo -e "\n[*] Installing tailscale...\n"
+	curl -fsSL https://tailscale.com/install.sh | sh
+	echo -e "\n[*] Tailscale installed\n"
+else
+	echo -e "\n[*] Tailscale already installed, skipping installation.\n"
 fi
+sudo systemctl enable tailscaled --now
+
+TAILSCALE_CONF="/etc/sysctl.d/99-tailscale.conf"
+if ! sudo grep -q 'net.ipv4.ip_forward = 1' "$TAILSCALE_CONF"; then
+	echo 'net.ipv4.ip_forward = 1' | sudo tee -a "$TAILSCALE_CONF"
+else
+	echo "net.ipv4.ip_forward already configured."
+fi
+if ! sudo grep -q 'net.ipv6.conf.all.forwarding = 1' "$TAILSCALE_CONF"; then
+	echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a "$TAILSCALE_CONF"
+else
+	echo "net.ipv6.conf.all.forwarding already configured."
+fi
+sudo sysctl -p "$TAILSCALE_CONF"
 
 echo -e "\n[*] All dependencies installed and carwhisperer built.\n"
 
