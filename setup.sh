@@ -12,7 +12,7 @@ echo -e "\n[*] Full system update...\n"
 sudo apt full-upgrade -y
 
 echo -e "\n[*] Installing WiFi/Bluetooth attack tools and dependencies...\n"
-sudo apt install build-essential bluez libbluetooth-dev sox nmap aircrack-ng network-manager reaver bluez mdk4 iw pixiewps nano neovim hostapd dnsmasq python3-dev libnl-route-3-dev libnl-genl-3-dev libpcap-dev libev-dev libnl-3-dev -y
+sudo apt install build-essential bluez libbluetooth-dev sox nmap aircrack-ng network-manager reaver bluez mdk4 iw pixiewps nano neovim hostapd dnsmasq python3-dev libnl-route-3-dev libnl-genl-3-dev libpcap-dev libev-dev libnl-3-dev gpsd gpsd-clients tmux -y
 
 echo -e "\n[*] Building the carwhisperer exploit...\n"
 cd "$SCRIPT_DIR/.scripts/carwhisperer"
@@ -20,30 +20,27 @@ make
 mkdir -p "output"
 cd "$SCRIPT_DIR"
 
-read -p "Do you want to install tailscale? (Y/n): " tailscale
-if [ "${tailscale^^}" != "N" ]; then
-    if ! command -v tailscale &> /dev/null; then
-        echo -e "\n[*] Installing tailscale...\n"
-        curl -fsSL https://tailscale.com/install.sh | sh
-        echo -e "\n[*] Tailscale installed\n"
-    else
-        echo -e "\n[*] Tailscale already installed, skipping installation.\n"
-    fi
-    sudo systemctl enable tailscaled --now
-    
-    TAILSCALE_CONF="/etc/sysctl.d/99-tailscale.conf"
-    if ! sudo grep -q 'net.ipv4.ip_forward = 1' "$TAILSCALE_CONF"; then
-        echo 'net.ipv4.ip_forward = 1' | sudo tee -a "$TAILSCALE_CONF"
-    else
-        echo "net.ipv4.ip_forward already configured."
-    fi
-    if ! sudo grep -q 'net.ipv6.conf.all.forwarding = 1' "$TAILSCALE_CONF"; then
-        echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a "$TAILSCALE_CONF"
-    else
-        echo "net.ipv6.conf.all.forwarding already configured."
-    fi
-    sudo sysctl -p "$TAILSCALE_CONF"
+if ! command -v tailscale &> /dev/null; then
+	echo -e "\n[*] Installing tailscale...\n"
+	curl -fsSL https://tailscale.com/install.sh | sh
+	echo -e "\n[*] Tailscale installed\n"
+else
+	echo -e "\n[*] Tailscale already installed, skipping installation.\n"
 fi
+sudo systemctl enable tailscaled --now
+
+TAILSCALE_CONF="/etc/sysctl.d/99-tailscale.conf"
+if ! sudo grep -q 'net.ipv4.ip_forward = 1' "$TAILSCALE_CONF"; then
+	echo 'net.ipv4.ip_forward = 1' | sudo tee -a "$TAILSCALE_CONF"
+else
+	echo "net.ipv4.ip_forward already configured."
+fi
+if ! sudo grep -q 'net.ipv6.conf.all.forwarding = 1' "$TAILSCALE_CONF"; then
+	echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a "$TAILSCALE_CONF"
+else
+	echo "net.ipv6.conf.all.forwarding already configured."
+fi
+sudo sysctl -p "$TAILSCALE_CONF"
 
 echo -e "\n[*] All dependencies installed and carwhisperer built.\n"
 
@@ -82,6 +79,9 @@ fi
 
 echo -e "\n[*] Installing Kismet package...\n"
 sudo apt install kismet -y
+
+echo -e "\n[*] Adding Kismet GPS config entry...\n"
+sudo sh -c 'grep -qxF "gps=gpsd:host=localhost,port=2947" /etc/kismet/kismet.conf || echo "gps=gpsd:host=localhost,port=2947" >> /etc/kismet/kismet.conf'
 
 echo -e "\n[*] Disabling Kismet service from starting on boot...\n"
 sudo systemctl disable kismet
