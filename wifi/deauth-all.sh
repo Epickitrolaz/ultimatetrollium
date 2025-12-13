@@ -12,4 +12,4 @@ fi
 
 sleep 5 # Give the interface time start up
 
-sudo .scripts/wifijammer/.venv/bin/python .scripts/wifijammer/wifijammer.py -i $INTERFACE --verbose --filter "${MAC}"
+sudo ../.scripts/wifijammer/.venv/bin/python ../.scripts/wifijammer/wifijammer.py -i $INTERFACE --verbose --filter "${MAC}"

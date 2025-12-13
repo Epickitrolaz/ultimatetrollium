@@ -14,4 +14,4 @@ fi
 
 read -p "packets/sec?: " packets
 
-sudo .scripts/dhcp-starvation/dhcp-starvation $INTERFACE $packets
+sudo ../.scripts/dhcp-starvation/dhcp-starvation $INTERFACE $packets

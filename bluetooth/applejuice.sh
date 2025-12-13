@@ -2,7 +2,7 @@
 
 sudo rfkill unblock bluetooth
 
-cd .scripts/applejuice
+cd ../.scripts/applejuice
 
 echo "$(cat << EOF
 Please select a message number or enter "random".
