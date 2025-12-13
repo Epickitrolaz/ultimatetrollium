@@ -12,7 +12,7 @@ echo -e "\n[*] Full system update...\n"
 sudo apt full-upgrade -y
 
 echo -e "\n[*] Installing WiFi/Bluetooth attack tools and dependencies...\n"
-sudo apt install build-essential bluez libbluetooth-dev sox nmap aircrack-ng network-manager reaver bluez mdk4 iw pixiewps nano neovim hostapd dnsmasq python3-dev libnl-route-3-dev libnl-genl-3-dev libpcap-dev libev-dev libnl-3-dev -y
+sudo apt install build-essential bluez libbluetooth-dev sox nmap aircrack-ng network-manager reaver bluez mdk4 iw pixiewps nano neovim hostapd dnsmasq python3-dev libnl-route-3-dev libnl-genl-3-dev libpcap-dev libev-dev libnl-3-dev gpsd gpsd-clients tmux -y
 
 echo -e "\n[*] Building the carwhisperer exploit...\n"
 cd "$SCRIPT_DIR/.scripts/carwhisperer"
@@ -82,6 +82,9 @@ fi
 
 echo -e "\n[*] Installing Kismet package...\n"
 sudo apt install kismet -y
+
+echo -e "\n[*] Adding Kismet GPS config entry...\n"
+sudo sh -c 'echo "gps=gpsd:host=localhost,port=2947" >> /etc/kismet/kismet.conf'
 
 echo -e "\n[*] Disabling Kismet service from starting on boot...\n"
 sudo systemctl disable kismet
