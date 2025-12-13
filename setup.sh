@@ -84,7 +84,7 @@ echo -e "\n[*] Installing Kismet package...\n"
 sudo apt install kismet -y
 
 echo -e "\n[*] Adding Kismet GPS config entry...\n"
-sudo sh -c 'echo "gps=gpsd:host=localhost,port=2947" >> /etc/kismet/kismet.conf'
+sudo sh -c 'grep -qxF "gps=gpsd:host=localhost,port=2947" /etc/kismet/kismet.conf || echo "gps=gpsd:host=localhost,port=2947" >> /etc/kismet/kismet.conf'
 
 echo -e "\n[*] Disabling Kismet service from starting on boot...\n"
 sudo systemctl disable kismet
