@@ -14,8 +14,8 @@ sudo apt update
 sudo apt install git -y
 
 git clone https://github.com/PixelGames987/ultimatetrollium/
-git pull
 cd ultimatetrollium
+git pull
 
 ./setup.sh
 ```
