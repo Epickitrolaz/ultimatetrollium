@@ -1,19 +1,19 @@
 #!/bin/bash
 
-exec_path=".scripts/carwhisperer/carwhisperer"
-message_file=".scripts/carwhisperer/message.raw"
-output_dir=".scripts/carwhisperer/output"
-output_raw=".scripts/carwhisperer/out.raw"
+exec_path="../.scripts/carwhisperer/carwhisperer"
+message_file="../.scripts/carwhisperer/message.raw"
+output_dir="../.scripts/carwhisperer/output"
+output_raw="../.scripts/carwhisperer/out.raw"
 output_wav="out" # .wav is added later in the script
 
 rm -f /tmp/scan.txt /tmp/macs.txt > /dev/null
 rm -f $message_file
 rm -f $output_dir/* > /dev/null
 
-echo -e "\nWAV files need to be put in .scripts/carwhisperer\n"
+echo -e "\nWAV files need to be put in ultimatetrollium/.scripts/carwhisperer\n"
 read -p "WAV file name?: " file
 
-sox -t wav -r 44100 -c 2 ".scripts/carwhisperer/$file" -t raw -r 8000 -c 1 -e signed-integer -b 16 "$message_file"
+sox -t wav -r 44100 -c 2 "../.scripts/carwhisperer/$file" -t raw -r 8000 -c 1 -e signed-integer -b 16 "$message_file"
 
 function cleanup() {
         killall carwhisperer 

@@ -8,8 +8,6 @@ if [[ "${mode}" = "Mode:Monitor" ]]; then
         sudo ifconfig ${INTERFACE} up
 fi
 
-export absolute_path=$(pwd)
-
 cleanup() {
 	echo "Killing pixiewps processes..."
 	sudo pkill -KILL -f pixiewps || true
@@ -34,4 +32,4 @@ trap cleanup INT TERM
 echo "Warning: This script is highly experimental"
 echo "The script can be stopped using ctrl+c"
 
-$absolute_path/.scripts/pixie-all/venv/bin/python .scripts/pixie-all/main.py
+../.scripts/pixie-all/venv/bin/python ../.scripts/pixie-all/main.py
