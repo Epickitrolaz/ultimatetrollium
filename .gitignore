@@ -18,6 +18,7 @@
 .scripts/probe-scanner/.venv
 wifi/captured
 wifi/Kismet-*
+wifi/reports
 bluetooth/*.raw
 local/reports
 nohup.out
