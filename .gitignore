@@ -16,6 +16,7 @@
 .scripts/applejuice/.venv
 .scripts/applejuice/utils/__pycache__
 .scripts/probe-scanner/.venv
+.scripts/direct-scanner/.venv
 wifi/captured
 wifi/Kismet-*
 wifi/reports

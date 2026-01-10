@@ -139,6 +139,15 @@ python -m venv "$PROBE_SCANNER_PATH"/.venv
 echo -e "\n[*] Probe-scanner set up.\n"
 
 
+DIRECT_SCANNER_PATH="$SCRIPT_DIR/.scripts/direct-scanner"
+
+echo -e "\n[*] Setting up direct-scanner...\n"
+python -m venv "$DIRECT_SCANNER_PATH"/.venv
+"$DIRECT_SCANNER_PATH"/.venv/bin/python -m pip install -r "$DIRECT_SCANNER_PATH"/requirements.txt
+
+echo -e "\n[*] Direct-scanner set up.\n"
+
+
 mkdir -p wifi/captured
 
 read -p "Which wlan device will you be using? (eg. wlan1): " interface
