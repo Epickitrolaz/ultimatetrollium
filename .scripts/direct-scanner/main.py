@@ -66,14 +66,15 @@ def try_passwords(network: nmcli.DeviceWifi, passwords: list):
 
 
 def main():
-    networks = scan(INTERFACE)
-    networks_d = direct_networks(networks)
+    while True:
+        networks = scan(INTERFACE)
+        networks_d = direct_networks(networks)
 
-    if networks_d != []:
-        log("none", "[*] DIRECT networks found")
+        if networks_d != []:
+            log("none", "[*] DIRECT networks found")
 
-    for network in networks_d:
-        try_passwords(network, PASSWORDS)
+        for network in networks_d:
+            try_passwords(network, PASSWORDS)
 
 
 if __name__ == "__main__":
