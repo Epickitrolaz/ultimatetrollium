@@ -13,7 +13,6 @@ fi
 read -p "ssid?: " ssid
 
 read -s -p "password? (leave blank for open networks): " password
-echo
 
 if [ -z "${password}" ]; then
     sudo nmcli dev wifi connect "${ssid}" ifname "${INTERFACE}"
