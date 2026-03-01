@@ -8,6 +8,8 @@ if [[ "${mode}" = "Mode:Monitor" ]]; then
         sudo ifconfig ${INTERFACE} up
 fi
 
+sleep 1
+
 cleanup() {
 	echo "Killing pixiewps processes..."
 	sudo pkill -KILL -f pixiewps || true
